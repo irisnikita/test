@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+// import logo from './logo.svg';
 import './App.css';
 
+import '@antscorp/document/main.css';
+
 function App() {
+
+  const [TopolPlugin, setTopolPlugin] = useState()
+
+  useEffect(() => {
+    var s = document.createElement('script');
+
+    s.src = "https://d5aoblv5p04cg.cloudfront.net/editor-2/loader/build.js"
+    s.type = "text/javascript";
+    
+    document.body.appendChild(s)
+
+    setTopolPlugin(window.TopolPlugin)
+
+  } , [])
+
+  console.log(TopolPlugin)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    <button onClick={() => {console.log(window.TopolPlugin)}}>onCLick</button>
+    qw
+    </>
+    );
 }
 
 export default App;
